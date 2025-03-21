@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Mother's Day!</title>
+    <style>
+        :root {
+            --flower-color: #ff69b4;
+            --stem-color: #2e8b57;
+            --bg-color: #f8f9fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--bg-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+            padding: 20px;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #333;
+            position: relative;
+            z-index: 2;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #555;
+            position: relative;
+            z-index: 2;
+        }
+
+        .flower-container {
+            position: relative;
+            width: 300px;
+            height: 350px;
+            margin: 0 auto 40px;
+        }
+
+        /* New Flower Design */
+        .stem {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 6px;
+            height: 180px;
+            background-color: var(--stem-color);
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .leaf {
+            position: absolute;
+            width: 40px;
+            height: 25px;
+            background-color: var(--stem-color);
+            border-radius: 100% 0;
+            z-index: 1;
+        }
+
+        .leaf-left {
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-45px) rotate(-30deg);
+            animation: leaf-sway 4s ease-in-out infinite;
+        }
+
+        .leaf-right {
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(5px) rotate(30deg) scaleX(-1);
+            animation: leaf-sway 4s ease-in-out 0.5s infinite reverse;
+        }
+
+        .flower-head {
+            position: absolute;
+            bottom: 180px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+
+        /* Inner petals */
+        .inner-petals {
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+
+        .inner-petal {
+            position: absolute;
+            width: 40px;
+            height: 60px;
+            background-color: var(--flower-color);
+            border-radius: 50% 50% 50% 50% / 80% 80% 20% 20%;
+            opacity: 0.9;
+            transform-origin: bottom center;
+            animation: inner-petal-sway 5s ease-in-out infinite;
+        }
+
+        /* Positioning inner petals in a circle */
+        .inner-petal:nth-child(1) {
+            left: 20px;
+            transform: rotate(0deg) translateY(-25px);
+            animation-delay: 0s;
+        }
+        
+        .inner-petal:nth-child(2) {
+            left: 20px;
+            transform: rotate(45deg) translateY(-25px);
+            animation-delay: 0.2s;
+        }
+        
+        .inner-petal:nth-child(3) {
+            left: 20px;
+            transform: rotate(90deg) translateY(-25px);
+            animation-delay: 0.4s;
+        }
+        
+        .inner-petal:nth-child(4) {
+            left: 20px;
+            transform: rotate(135deg) translateY(-25px);
+            animation-delay: 0.6s;
+        }
+        
+        .inner-petal:nth-child(5) {
+            left: 20px;
+            transform: rotate(180deg) translateY(-25px);
+            animation-delay: 0.8s;
+        }
+        
+        .inner-petal:nth-child(6) {
+            left: 20px;
+            transform: rotate(225deg) translateY(-25px);
+            animation-delay: 1s;
+        }
+        
+        .inner-petal:nth-child(7) {
+            left: 20px;
+            transform: rotate(270deg) translateY(-25px);
+            animation-delay: 1.2s;
+        }
+        
+        .inner-petal:nth-child(8) {
+            left: 20px;
+            transform: rotate(315deg) translateY(-25px);
+            animation-delay: 1.4s;
+        }
+
+        /* Outer petals */
+        .outer-petals {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top: -10px;
+            left: -10px;
+        }
+
+        .outer-petal {
+            position: absolute;
+            width: 30px;
+            height: 70px;
+            background-color: var(--flower-color);
+            opacity: 0.7;
+            border-radius: 50% 50% 50% 50% / 80% 80% 20% 20%;
+            transform-origin: bottom center;
+            animation: outer-petal-sway 6s ease-in-out infinite;
+        }
+
+        /* Positioning outer petals */
+        .outer-petal:nth-child(1) {
+            left: 35px;
+            transform: rotate(22.5deg) translateY(-40px);
+            animation-delay: 0.1s;
+        }
+        
+        .outer-petal:nth-child(2) {
+            left: 35px;
+            transform: rotate(67.5deg) translateY(-40px);
+            animation-delay: 0.3s;
+        }
+        
+        .outer-petal:nth-child(3) {
+            left: 35px;
+            transform: rotate(112.5deg) translateY(-40px);
+            animation-delay: 0.5s;
+        }
+        
+        .outer-petal:nth-child(4) {
+            left: 35px;
+            transform: rotate(157.5deg) translateY(-40px);
+            animation-delay: 0.7s;
+        }
+        
+        .outer-petal:nth-child(5) {
+            left: 35px;
+            transform: rotate(202.5deg) translateY(-40px);
+            animation-delay: 0.9s;
+        }
+        
+        .outer-petal:nth-child(6) {
+            left: 35px;
+            transform: rotate(247.5deg) translateY(-40px);
+            animation-delay: 1.1s;
+        }
+        
+        .outer-petal:nth-child(7) {
+            left: 35px;
+            transform: rotate(292.5deg) translateY(-40px);
+            animation-delay: 1.3s;
+        }
+        
+        .outer-petal:nth-child(8) {
+            left: 35px;
+            transform: rotate(337.5deg) translateY(-40px);
+            animation-delay: 1.5s;
+        }
+
+        /* Center of flower */
+        .center {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-color: #ffd700;
+            border-radius: 50%;
+            top: 40px;
+            left: 20px;
+            z-index: 10;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        .hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: rgba(255, 105, 180, 0.6);
+            animation: float-heart 15s linear infinite;
+        }
+
+        .message {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            position: relative;
+            z-index: 2;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .color-picker {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .color-option {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: transform 0.3s, border 0.3s;
+        }
+
+        .color-option:hover {
+            transform: scale(1.1);
+        }
+
+        .active {
+            border: 2px solid #333;
+        }
+
+        .customize-section {
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .customize-section h3 {
+            margin-bottom: 15px;
+            color: #444;
+        }
+
+        .custom-message {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        button {
+            background-color: var(--flower-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #e5508e;
+        }
+
+        footer {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #777;
+            text-align: center;
+        }
+
+        /* Animations */
+        @keyframes inner-petal-sway {
+            0%, 100% {
+                transform: rotate(var(--rotate)) translateY(-25px);
+            }
+            50% {
+                transform: rotate(calc(var(--rotate) + 5deg)) translateY(-25px);
+            }
+        }
+
+        @keyframes outer-petal-sway {
+            0%, 100% {
+                transform: rotate(var(--rotate)) translateY(-40px);
+            }
+            50% {
+                transform: rotate(calc(var(--rotate) - 5deg)) translateY(-40px);
+            }
+        }
+
+        @keyframes leaf-sway {
+            0%, 100% {
+                transform: translateX(var(--translate-x)) rotate(var(--rotate)) scaleX(var(--scale-x, 1));
+            }
+            50% {
+                transform: translateX(var(--translate-x)) rotate(calc(var(--rotate) + 10deg)) scaleX(var(--scale-x, 1));
+            }
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+            }
+        }
+
+        @keyframes float-heart {
+            0% {
+                transform: translateY(100vh) translateX(var(--translate-x, 0)) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(var(--translate-x, 0)) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            p {
+                font-size: 1rem;
+            }
+            
+            .flower-container {
+                width: 250px;
+                height: 300px;
+            }
+            
+            .message {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .flower-container {
+                width: 200px;
+                height: 250px;
+            }
+            
+            .stem {
+                height: 150px;
+            }
+            
+            .flower-head {
+                bottom: 150px;
+            }
+            
+            .inner-petal, .outer-petal {
+                width: 80%;
+                height: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Happy Mother's Day!</h1>
+        <p id="message-display">To the most wonderful mom in the world. Thank you for everything you do. I love you! ❤️</p>
+        
+        <div class="flower-container">
+            <div class="stem"></div>
+            <div class="leaf leaf-left"></div>
+            <div class="leaf leaf-right"></div>
+            
+            <div class="flower-head">
+                <div class="outer-petals">
+                    <div class="outer-petal" style="--rotate: 22.5deg"></div>
+                    <div class="outer-petal" style="--rotate: 67.5deg"></div>
+                    <div class="outer-petal" style="--rotate: 112.5deg"></div>
+                    <div class="outer-petal" style="--rotate: 157.5deg"></div>
+                    <div class="outer-petal" style="--rotate: 202.5deg"></div>
+                    <div class="outer-petal" style="--rotate: 247.5deg"></div>
+                    <div class="outer-petal" style="--rotate: 292.5deg"></div>
+                    <div class="outer-petal" style="--rotate: 337.5deg"></div>
+                </div>
+                <div class="inner-petals">
+                    <div class="inner-petal" style="--rotate: 0deg"></div>
+                    <div class="inner-petal" style="--rotate: 45deg"></div>
+                    <div class="inner-petal" style="--rotate: 90deg"></div>
+                    <div class="inner-petal" style="--rotate: 135deg"></div>
+                    <div class="inner-petal" style="--rotate: 180deg"></div>
+                    <div class="inner-petal" style="--rotate: 225deg"></div>
+                    <div class="inner-petal" style="--rotate: 270deg"></div>
+                    <div class="inner-petal" style="--rotate: 315deg"></div>
+                    <div class="center"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="customize-section">
+            <h3>Customize Flower Color</h3>
+            <div class="color-picker">
+                <div class="color-option active" style="background-color: #ff69b4;" data-color="#ff69b4"></div>
+                <div class="color-option" style="background-color: #ff4500;" data-color="#ff4500"></div>
+                <div class="color-option" style="background-color: #9932cc;" data-color="#9932cc"></div>
+                <div class="color-option" style="background-color: #4169e1;" data-color="#4169e1"></div>
+                <div class="color-option" style="background-color: #ff8c00;" data-color="#ff8c00"></div>
+                <div class="color-option" style="background-color: #32cd32;" data-color="#32cd32"></div>
+            </div>
+            
+            <h3>Personalize Your Message</h3>
+            <textarea class="custom-message" rows="4" placeholder="Write your personal message here...">To the most wonderful mom in the world. Thank you for everything you do. I love you! ❤️</textarea>
+            <button id="update-message">Update Message</button>
+        </div>
+    </div>
+    
+    <div class="hearts" id="hearts-container"></div>
+    
+    <footer>Made with love for Mom ❤️</footer>
+
+    <script>
+        // Create floating hearts
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts-container');
+            const numberOfHearts = 20;
+            
+            for (let i = 0; i < numberOfHearts; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤️';
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.setProperty('--translate-x', `${Math.random() * 100 - 50}px`);
+                heart.style.animationDuration = `${15 + Math.random() * 10}s`;
+                heart.style.animationDelay = `${Math.random() * 5}s`;
+                heart.style.fontSize = `${Math.random() * 10 + 15}px`;
+                heart.style.opacity = `${Math.random() * 0.5 + 0.5}`;
+                heartsContainer.appendChild(heart);
+            }
+        }
+        
+        // Color picker functionality
+        function initColorPicker() {
+            const colorOptions = document.querySelectorAll('.color-option');
+            const innerPetals = document.querySelectorAll('.inner-petal');
+            const outerPetals = document.querySelectorAll('.outer-petal');
+            const button = document.querySelector('button');
+            
+            colorOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    const color = option.getAttribute('data-color');
+                    
+                    // Update active state
+                    colorOptions.forEach(opt => opt.classList.remove('active'));
+                    option.classList.add('active');
+                    
+                    // Update flower color
+                    document.documentElement.style.setProperty('--flower-color', color);
+                    
+                    // Update button color
+                    button.style.backgroundColor = color;
+                });
+            });
+        }
+        
+        // Update message functionality
+        function initMessageUpdater() {
+            const updateButton = document.getElementById('update-message');
+            const messageInput = document.querySelector('.custom-message');
+            const messageDisplay = document.getElementById('message-display');
+            
+            updateButton.addEventListener('click', () => {
+                messageDisplay.textContent = messageInput.value;
+                
+                // Add a little animation
+                messageDisplay.style.transform = 'scale(1.05)';
+                messageDisplay.style.transition = 'transform 0.3s';
+                
+                setTimeout(() => {
+                    messageDisplay.style.transform = 'scale(1)';
+                }, 300);
+            });
+        }
+        
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            createHearts();
+            initColorPicker();
+            initMessageUpdater();
+            
+            // Set CSS variables for animations
+            const innerPetals = document.querySelectorAll('.inner-petal');
+            innerPetals.forEach((petal, index) => {
+                const rotate = index * 45;
+                petal.style.setProperty('--rotate', `${rotate}deg`);
+            });
+            
+            const outerPetals = document.querySelectorAll('.outer-petal');
+            outerPetals.forEach((petal, index) => {
+                const rotate = index * 45 + 22.5;
+                petal.style.setProperty('--rotate', `${rotate}deg`);
+            });
+            
+            // Setup leaf animation variables
+            const leaves = document.querySelectorAll('.leaf');
+            leaves[0].style.setProperty('--translate-x', '-45px');
+            leaves[0].style.setProperty('--rotate', '-30deg');
+            
+            leaves[1].style.setProperty('--translate-x', '5px');
+            leaves[1].style.setProperty('--rotate', '30deg');
+            leaves[1].style.setProperty('--scale-x', '-1');
+        });
+    </script>
+</body>
+</html>
